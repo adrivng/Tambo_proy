@@ -1,0 +1,57 @@
+﻿<div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #730D4E;">
+    <div class="card shadow-lg border-0 rounded-4" style="width: 28rem; background-color: #C71585; color: white;">
+        <div class="card-header text-center fw-bold fs-4 border-0" style="background-color: #C71585; color: white;">
+            Registro de Proveedores
+        </div>
+        <div class="card-body p-4">
+            <!-- Mensajes -->
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="alert alert-success">@ViewBag.Mensaje</div>
+            }
+            @if (ViewBag.error != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Error</div>
+            }
+        </div>
+
+        <div class="card-body p-4" style="background-color: #C71585;">
+            <form asp-action="RegistroProveedor_Post" method="post">
+                @* <div class="mb-3">
+                    <label for="codigo" class="form-label fw-semibold">Código</label>
+                    <input type="text" class="form-control border-0" id="codigo" placeholder="Ingrese el código del proveedor">
+                </div> *@
+
+                <div class="mb-3">
+                    <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                    <input type="text" class="form-control border-0" id="nombre" name="nombre" required placeholder="Ingrese el nombre del proveedor">
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono" class="form-label fw-semibold">Teléfono</label>
+                    <input type="text" class="form-control border-0" id="telefono" name="telefono" required placeholder="Ingrese el número de teléfono">
+                </div>
+
+                <div class="mb-3">
+                    <label for="correo" class="form-label fw-semibold">Correo</label>
+                    <input type="email" class="form-control border-0" id="correo" name="correo" required  placeholder="ejemplo@correo.com">
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+                    <textarea class="form-control border-0" id="descripcion" name="descripcion" rows="4" required placeholder="Escribe una descripción aquí..."></textarea>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn fw-bold me-2" style="background-color: gold; color: black;">
+                        Registrar
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

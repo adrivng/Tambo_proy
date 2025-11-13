@@ -12,9 +12,59 @@ namespace MVC_TAMBOv2.Controllers
         public TamboController(TamboContext context)
         {
             _context = context;
-        }        
+        }
+        public IActionResult MenuPrincipal() // el menu pricipal
+        {
+            var productos = new List<dynamic>
+               {
+                  new { Nombre = "Gaseosa 500ml", Precio = 3.50, Imagen = "~/img/inka.jpg" },
+                  new { Nombre = "Papas fritas 150g", Precio = 4.00, Imagen = "~/img/papas.jpg" },
+                  new { Nombre = "Galletas de chocolate", Precio = 2.80, Imagen = "~/img/galletas.jpg" }
+                  };
 
-        public IActionResult Index()
+            return View(productos);
+        }
+
+        [HttpGet]
+        public IActionResult RegistroProveedor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegistroProveedor_Post(Proveedor proveedor)
+        {
+            try
+            {
+                var nombre = Request.Form["nombre"];
+                var telefono = Request.Form["telefono"];
+                var correo = Request.Form["correo"];
+                var descripcion = Request.Form["descripcion"];
+
+                var proveedorNuevo = new Proveedor
+                {
+                    Nombre = nombre,
+                    Telefono = telefono,
+                    Correo = correo,
+                    Descripcion = descripcion
+                };
+
+                _context.Proveedors.Add(proveedorNuevo);
+                _context.SaveChanges();
+
+                TempData["Mensaje"] = "Registro exitoso";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Fallo al registrar: " + ex.Message;
+            }
+
+            return RedirectToAction("RegistroProveedor");
+        }
+
+
+
+        public IActionResult Index() //es el index para poder listar los productos registrados
         {
             var productos = _context.Productos
                         .Include(p => p.Categoria)
