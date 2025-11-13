@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MVC_TAMBOv2.Models.Producto>
+
+<h1>Productos</h1>
+<br />
+<a asp-action="AgregarProducto" class="btn btn-primary"
+   style="background-color:#6f42c1; border-color:#6f42c1;">Registrar Producto</a>
+<br />
+<br />
+<table class="table table-bordered">
+	<tr>
+		<th>Categoria</th>
+		<th>Marca</th>
+		<th>Nombre</th>
+		<th>Precio Unitario</th>
+		<th>Fecha expiracion</th>
+	</tr>
+	@foreach (var product in Model)
+	{
+		<tr>
+			<td>@product.Categoria?.NombreCategoria</td>
+			<td>@product.Marca?.Nombre</td>
+			<td>@product.Nombre</td>
+			<td>@product.PrecioUnitario</td>
+			<td>@product.FechaExpiracion</td>
+		</tr>
+	}
+</table>
