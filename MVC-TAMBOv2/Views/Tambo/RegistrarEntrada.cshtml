@@ -1,0 +1,34 @@
+﻿@model MVC_TAMBOv2.ViewModel.Almacen.RegistrarEntradaViewModel
+
+<h2>Registrar Entrada de Producto</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="RegistrarEntrada">
+    <input type="hidden" asp-for="IdProducto" />
+
+    <div class="mb-3">
+        <label>Producto</label>
+        <input class="form-control" value="@Model.NombreProducto" disabled />
+    </div>
+
+    <div class="mb-3">
+        <label>Cantidad a ingresar</label>
+        <input asp-for="Cantidad" class="form-control" type="number" min="1" />
+    </div>
+
+    <div class="mb-3">
+        <label>Proveedor</label>
+        <input asp-for="Motivo" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Registrar Entrada</button>
+    <br />
+    <br />
+    <div>
+        <a asp-action="Index">Volver</a>
+    </div>
+</form>

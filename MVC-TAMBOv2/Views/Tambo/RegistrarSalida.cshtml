@@ -1,0 +1,34 @@
+﻿@model MVC_TAMBOv2.ViewModel.Almacen.RegistrarSalidaViewModel
+
+<h2>Registrar Salida de Producto</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="RegistrarSalida">
+    <input type="hidden" asp-for="IdProducto" />
+
+    <div class="mb-3">
+        <label>Producto</label>
+        <input class="form-control" value="@Model.NombreProducto" disabled />
+    </div>
+
+    <div class="mb-3">
+        <label>Cantidad a retirar</label>
+        <input asp-for="Cantidad" type="number" class="form-control" min="1" />
+    </div>
+
+    <div class="mb-3">
+        <label>Motivo</label>
+        <input asp-for="Motivo" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Registrar Salida</button>
+    <br />
+    <br />
+    <div>
+        <a asp-action="Index">Volver</a>
+    </div>
+</form>

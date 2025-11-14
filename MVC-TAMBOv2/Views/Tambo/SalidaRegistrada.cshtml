@@ -1,0 +1,13 @@
+﻿@model MVC_TAMBOv2.ViewModel.Almacen.SalidaRegistradaViewModel
+
+<h2>Salida registrada correctamente</h2>
+
+<div class="card p-3">
+    <p><strong>Comprobante:</strong> @Model.NumeroComprobante</p>
+    <p><strong>Producto:</strong> @Model.NombreProducto</p>
+    <p><strong>Cantidad:</strong> @Model.Cantidad</p>
+    <p><strong>Fecha:</strong> @Model.FechaSalida.ToString("dd/MM/yyyy HH:mm")</p>
+</div>
+
+<br />
+<a asp-action="Index" class="btn btn-secondary">Volver al listado</a>

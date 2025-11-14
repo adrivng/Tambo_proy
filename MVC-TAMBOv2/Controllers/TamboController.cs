@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MVC_TAMBOv2.Models;
 using MVC_TAMBOv2.ViewModel;
+using MVC_TAMBOv2.ViewModel.Almacen;
 
 namespace MVC_TAMBOv2.Controllers
 {
@@ -63,12 +64,11 @@ namespace MVC_TAMBOv2.Controllers
         }
 
 
-
         public IActionResult Index() //es el index para poder listar los productos registrados
         {
             var productos = _context.Productos
-                        .Include(p => p.Categoria)
-                        .Include(p => p.Marca)
+                        .Include(p => p.IdCategoriaNavigation)
+                        .Include(p => p.IdMarcaNavigation)
                         .ToList();
 
             return View(productos);
@@ -119,5 +119,137 @@ namespace MVC_TAMBOv2.Controllers
             // 🔹 Redirigir al Index
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: Registrar salida
+        public IActionResult RegistrarSalida(int idProducto)
+        {
+            var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
+
+            if (producto == null)
+                return NotFound();
+
+            var vm = new RegistrarSalidaViewModel
+            {
+                IdProducto = producto.IdProducto,
+                NombreProducto = producto.Nombre
+            };
+
+            return View(vm);
+        }
+
+        // POST: Procesar salida
+        [HttpPost]
+        public IActionResult RegistrarSalida(RegistrarSalidaViewModel model)
+        {
+            var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == model.IdProducto);
+
+            if (producto == null)
+                return NotFound();
+
+            // Validar stock
+            if (model.Cantidad <= 0)
+            {
+                TempData["Error"] = "La cantidad debe ser mayor a 0.";
+                return RedirectToAction("RegistrarSalida", new { idProducto = model.IdProducto });
+            }
+
+            if (model.Cantidad > producto.Stock)
+            {
+                TempData["Error"] = "No hay stock suficiente.";
+                return RedirectToAction("RegistrarSalida", new { idProducto = model.IdProducto });
+            }
+
+            // Crear guía
+            var guia = new GuiaSalidum
+            {
+                FechaSalida = DateTime.Now
+            };
+
+            _context.GuiaSalida.Add(guia);
+            _context.SaveChanges();
+
+            // Registrar detalle
+            var detalle = new DetalleGuiasalidum
+            {
+                IdSalida = guia.IdGuiaSalida,
+                IdProducto = producto.IdProducto,
+                Cantidad = model.Cantidad
+            };
+
+            _context.DetalleGuiasalida.Add(detalle);
+
+            // Descontar stock
+            producto.Stock -= model.Cantidad;
+
+            _context.SaveChanges();
+
+            TempData["Mensaje"] = "Salida registrada correctamente.";
+
+            return RedirectToAction("SalidaRegistrada", new
+            {
+                id = guia.IdGuiaSalida,
+                producto = producto.Nombre,
+                cantidad = model.Cantidad
+            });
+        }
+
+        public IActionResult SalidaRegistrada(int id, string producto, int cantidad)
+        {
+            var guia = _context.GuiaSalida.FirstOrDefault(g => g.IdGuiaSalida == id);
+
+            if (guia == null)
+                return NotFound();
+
+            var vm = new SalidaRegistradaViewModel
+            {
+                IdGuiaSalida = guia.IdGuiaSalida,
+                NombreProducto = producto,
+                Cantidad = cantidad,
+                FechaSalida = guia.FechaSalida ?? DateTime.Now,
+                NumeroComprobante = guia.IdGuiaSalida.ToString("D6")
+            };
+
+            return View(vm);
+        }
+
+        public IActionResult RegistrarEntrada(int idProducto)
+        {
+            var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == idProducto);
+
+            if (producto == null)
+                return NotFound();
+
+            var vm = new RegistrarEntradaViewModel
+            {
+                IdProducto = producto.IdProducto,
+                NombreProducto = producto.Nombre
+            };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult RegistrarEntrada(RegistrarEntradaViewModel model)
+        {
+            var producto = _context.Productos.FirstOrDefault(p => p.IdProducto == model.IdProducto);
+
+            if (producto == null)
+                return NotFound();
+
+            if (model.Cantidad <= 0)
+            {
+                TempData["Error"] = "La cantidad debe ser mayor a 0.";
+                return RedirectToAction("RegistrarEntrada", new { idProducto = model.IdProducto });
+            }
+
+            // SUMAR stock
+            producto.Stock += model.Cantidad;
+
+            _context.SaveChanges();
+
+            TempData["Mensaje"] = "Entrada registrada correctamente.";
+            return RedirectToAction("Index");
+        }
+
     }
 }

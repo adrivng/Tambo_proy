@@ -6,22 +6,41 @@
    style="background-color:#6f42c1; border-color:#6f42c1;">Registrar Producto</a>
 <br />
 <br />
+
 <table class="table table-bordered">
-	<tr>
-		<th>Categoria</th>
-		<th>Marca</th>
-		<th>Nombre</th>
-		<th>Precio Unitario</th>
-		<th>Fecha expiracion</th>
-	</tr>
-	@foreach (var product in Model)
-	{
-		<tr>
-			<td>@product.Categoria?.NombreCategoria</td>
-			<td>@product.Marca?.Nombre</td>
-			<td>@product.Nombre</td>
-			<td>@product.PrecioUnitario</td>
-			<td>@product.FechaExpiracion</td>
-		</tr>
-	}
+    <tr>
+        <th>Categoria</th>
+        <th>Marca</th>
+        <th>Nombre</th>
+        <th>Precio Unitario</th>
+        <th>Fecha expiracion</th>
+        <th>Acciones</th>  <!-- NUEVA COLUMNA -->
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.IdCategoriaNavigation?.NombreCategoria</td>
+            <td>@product.IdMarcaNavigation?.Nombre</td>
+            <td>@product.Nombre</td>
+            <td>@product.PrecioUnitario</td>
+            <td>@product.FechaExpiracion</td>
+
+            <!-- BOTÓN DE ACCIÓN PARA REGISTRAR SALIDA -->
+            <td>
+                <a asp-controller="Tambo"
+                   asp-action="RegistrarSalida"
+                   asp-route-idProducto="@product.IdProducto"
+                   class="btn btn-warning btn-sm">
+                    Registrar Salida
+                </a>
+                <a asp-action="RegistrarEntrada"
+                   asp-route-idProducto="@product.IdProducto"
+                   class="btn btn-success btn-sm">
+                    Registrar Entrada
+                </a>
+            </td>
+        </tr>
+    }
 </table>
+

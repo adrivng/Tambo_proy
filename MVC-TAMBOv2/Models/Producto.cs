@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_TAMBOv2.Models;
 
@@ -17,8 +16,10 @@ public partial class Producto
     public decimal PrecioUnitario { get; set; }
 
     public DateOnly? FechaExpiracion { get; set; }
-    [ForeignKey("IdCategoria")]
-    public Categorium Categoria { get; set; }
-    [ForeignKey("IdMarca")]
-    public Marca Marca { get; set; }
+
+    public int Stock { get; set; }
+
+    public virtual Categorium? IdCategoriaNavigation { get; set; }
+
+    public virtual Marca? IdMarcaNavigation { get; set; }
 }
