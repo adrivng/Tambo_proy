@@ -378,11 +378,11 @@ public partial class TamboContext : DbContext
                 .HasColumnType("decimal(10, 0)")
                 .HasColumnName("Precio_unitario");
 
-            entity.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.Productos)
+            entity.HasOne(d => d.Categoria).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdCategoria)
                 .HasConstraintName("FK_Producto_Categoria");
 
-            entity.HasOne(d => d.IdMarcaNavigation).WithMany(p => p.Productos)
+            entity.HasOne(d => d.Marca).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdMarca)
                 .HasConstraintName("FK_Producto_Marca");
         });

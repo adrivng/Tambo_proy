@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC_TAMBOv2.Models;
 
@@ -19,7 +20,14 @@ public partial class Producto
 
     public int Stock { get; set; }
 
-    public virtual Categorium? IdCategoriaNavigation { get; set; }
+    // Corrección importante: nombres simples + ForeignKey correcto
+    [ForeignKey("IdCategoria")]
+    public virtual Categorium? Categoria { get; set; }
 
-    public virtual Marca? IdMarcaNavigation { get; set; }
+    [ForeignKey("IdMarca")]
+    public virtual Marca? Marca { get; set; }
+
+    //public virtual Categorium? IdCategoriaNavigation { get; set; }
+
+    //public virtual Marca? IdMarcaNavigation { get; set; }
 }

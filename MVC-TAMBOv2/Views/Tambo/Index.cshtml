@@ -25,8 +25,8 @@
             @foreach (var product in Model)
             {
                 <tr>
-                    <td>@product.IdCategoriaNavigation?.NombreCategoria</td>
-                    <td>@product.IdMarcaNavigation?.Nombre</td>
+                    <td>@product.Categoria?.NombreCategoria</td>
+                    <td>@product.Marca?.Nombre</td>
                     <td>@product.Nombre</td>
                     <td>S/ @product.PrecioUnitario</td>
                     <td>@product.FechaExpiracion?.ToString("yyyy-MM-dd")</td>

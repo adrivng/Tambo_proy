@@ -63,16 +63,15 @@ namespace MVC_TAMBOv2.Controllers
             return RedirectToAction("RegistroProveedor");
         }
 
-
-        public IActionResult Index() //es el index para poder listar los productos registrados
+        //es el index para poder listar los productos registrados
+        public IActionResult Index()
         {
             var productos = _context.Productos
-                        .Include(p => p.IdCategoriaNavigation)
-                        .Include(p => p.IdMarcaNavigation)
+                        .Include(p => p.Categoria)
+                        .Include(p => p.Marca)
                         .ToList();
 
             return View(productos);
-            
         }
         [HttpGet]
         public IActionResult AgregarProducto()
