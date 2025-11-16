@@ -2,34 +2,61 @@
     ViewData["Title"] = "Menú Principal";
 }
 
-<body class="menu-fondo">
+
+<!-- se agrego para que solo cargue en el menu principal con render section desde Loyout
+	en la primera linea dentro del body -->
+@section ExtraTop {
+    <div class="tambo-header-ticker">
+        <div class="tambo-ticker-content">
+            🎉 Promociones disponibles hoy — ¡Aprovecha nuestras ofertas especiales! — Delivery Tambo 24/7 🚀
+        </div>
+    </div>
+}
+
+<body class="menu-fondo">       
+
     <div class="container mt-4">
+
+        <!-- HEADER -->
         <header class="text-center mb-4">
-            <img src="~/img/logotambo.png" alt="Logo" width="60" />
+            <img src="~/img/logotambo.png" alt="Logo" class="tambo-logo" />
             <h1 class="mt-2">Tambo - Pedido en Línea</h1>
         </header>
 
-        <nav class="d-flex justify-content-center mb-4">
-            <a href="#" class="btn btn-warning mx-2">Inicio</a>
-            <a href="#" class="btn btn-outline-dark mx-2">Productos</a>
-            <a href="#" class="btn btn-outline-dark mx-2">Promociones</a>
-            <a href="#" class="btn btn-outline-dark mx-2">Mi carrito</a>
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="tambo-nav d-flex justify-content-center mb-4">
+            <a href="#" class="btn nav-btn mx-2">Inicio</a>
+            <a asp-controller="Home" asp-action="Productos" class="btn nav-btn-outline mx-2">Productos</a>
+            <a href="#" class="btn nav-btn-outline mx-2">Promociones</a>
+            <a href="#" class="btn nav-btn-outline mx-2">Mi carrito</a>
         </nav>
 
-        <main class="row">
+
+        <main class="row mt-4">
+
             <div class="col-md-3">
-                <h4>Categorías</h4>
-                <ul class="list-group">
-                    <li class="list-group-item">Bebidas</li>
-                    <li class="list-group-item">Snacks</li>
-                    <li class="list-group-item">Lácteos</li>
-                    <li class="list-group-item">Congelados</li>
-                </ul>
+                <h4 class="text-white">Categorías</h4>
+
+                <div class="categorias-box">
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="/Home/Productos#snacks" class="categoria-link">Snacks</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#galletas" class="categoria-link">Galletas</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#gaseosas" class="categoria-link">Gaseosas</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#aguas" class="categoria-link">Aguas</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#packs" class="categoria-link">Packs</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#cerveza" class="categoria-link">Cerveza</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#licores" class="categoria-link">Licores</a></li>
+                        <li class="list-group-item"><a href="/Home/Productos#chocolates" class="categoria-link">Chocolates</a></li>
+                    </ul>
+                </div>
+
             </div>
 
+            <!-- PRODUCTOS -->
             <div class="col-md-9">
                 <h4>Productos disponibles</h4>
                 <div class="row">
+
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <img src="~/img/inka.jpg" class="card-img-top" alt="Producto">
@@ -95,8 +122,62 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="~/img/field.jpg" class="card-img-top" alt="Producto">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Galleta Field Vainilla Sixpack 222g</h5>
+                                <p class="card-text">S/ 5.50</p>
+                                <button class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="~/img/ritz.jpg" class="card-img-top" alt="Producto">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Galleta Ritz Original Sixpack 120g</h5>
+                                <p class="card-text">S/ 4.80</p>
+                                <button class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="~/img/packcocas.jpg" class="card-img-top" alt="Producto">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Pack Coca Cola 3L + Inka Cola 3L</h5>
+                                <p class="card-text">S/ 20</p>
+                                <button class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="~/img/bigcola.jpg" class="card-img-top" alt="Producto">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Gaseosa Big Cola 1.7L</h5>
+                                <p class="card-text">S/ 4.30</p>
+                                <button class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="~/img/bigcola.jpg" class="card-img-top" alt="Producto">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Gaseosa Big Cola 1.7L</h5>
+                                <p class="card-text">S/ 4.30</p>
+                                <button class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div>           
         </main>
-    </div>
 </body>

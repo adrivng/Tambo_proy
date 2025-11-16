@@ -11,8 +11,8 @@
         <form asp-action="RegistroCliente" method="post">
 
             <input type="email" name="Correo"
-                   value="@ViewBag.Correo" readonly
-                   class="form-control tam-input mb-3" />
+                   value="@ViewBag.Correo" 
+                   class="form-control tam-input mb-3" placeholder="Crear correo" />
 
             <input type="password" name="Password"
                    class="form-control tam-input mb-3"
@@ -36,7 +36,7 @@
 
             <input type="number" name="Dni"
                    class="form-control tam-input mb-3"
-                   placeholder="DNI" />
+                   placeholder="DNI" maxlength="8" oninput="this.value = this.value.slice(0, 8);" />
 
             <select name="TipoCliente"
                     class="form-select tam-input mb-3">
@@ -46,7 +46,7 @@
 
             <input type="text" name="Ruc"
                    class="form-control tam-input mb-4"
-                   placeholder="RUC (Opcional)" />
+                   maxlength="11" placeholder="RUC (Opcional)" />
 
             <div class="d-flex justify-content-between mt-3">
 

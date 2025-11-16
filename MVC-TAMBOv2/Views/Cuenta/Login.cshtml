@@ -32,8 +32,38 @@
                class="btn btn-mostaza w-100">
                 Volver
             </a>
+            <br />
+            <!-- ENLACE DE REGISTRO -->
+            @* <div 
+                class="text-center mt-3">
+                <small>
+                    ¿No tienes cuenta?
+                    <a asp-controller="Cuenta"
+                       asp-action="RegistroCliente"
+                       style="color:#7A1FA2; font-weight:bold; text-decoration:none;">
+                        Regístrate aquí
+                    </a>
+                </small>
+            </div> *@
+
+            <div class="text-center mt-3">
+                ¿No tienes cuenta?
+                <a asp-controller="Cuenta"
+                   asp-action="RegistroCliente"
+                   class="fw-bold"
+                   style="color:#7A1FA2; text-decoration:none;">
+                    Regístrate aquí
+                </a>
+            </div>
 
         </form>
     </div>
 </div>
 
+<script>
+    // 👉 Antes de enviar el formulario copiamos el correo escrito
+    document.querySelector("form[method='get']").onsubmit = function () {
+        document.getElementById("correoOculto").value =
+            document.getElementById("correoLogin").value;
+    };
+</script>

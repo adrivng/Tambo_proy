@@ -58,7 +58,10 @@ namespace MVC_TAMBOv2.Controllers
         public IActionResult RegistroCliente()
         {
             var correo = HttpContext.Session.GetString("correoNuevoCliente");
-            if (correo == null) return RedirectToAction("Login");
+
+            // si no hay correo, simplemente muestra el input vacío
+            if (correo == null)
+                correo = "";
 
             ViewBag.Correo = correo;
             return View();
@@ -89,6 +92,21 @@ namespace MVC_TAMBOv2.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("MenuPrincipal", "Tambo");
+        }
+
+        public IActionResult IrRegistroCliente(string correo)
+        {
+            if (string.IsNullOrEmpty(correo))
+            {
+                // si no escribieron un correo, lo dejamos vacío pero permitimos que entre
+                HttpContext.Session.SetString("correoNuevoCliente", "");
+            }
+            else
+            {
+                HttpContext.Session.SetString("correoNuevoCliente", correo);
+            }
+
+            return RedirectToAction("RegistroCliente");
         }
     }
 }

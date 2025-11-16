@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -11,6 +11,29 @@ html {
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
+
+/* === FIX FOOTER ABAJO SIEMPRE === */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenedor principal donde vive RenderBody */
+.main-content {
+    flex: 1; /* El contenido crece y empuja el footer abajo */
+}
+
+/* Evita que el TICKER se achique */
+.tambo-header-ticker {
+    flex-shrink: 0 !important;
+}
+
 
 html {
   position: relative;
@@ -28,4 +51,417 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+/* TARJETA DE LOGIN TAMBO */
+.login-card {
+    background: white;
+    border-radius: 18px;
+    padding: 35px 35px 40px 35px;
+    width: 420px;
+}
+
+/* INPUTS REDONDEADOS */
+.tam-input {
+    border-radius: 12px;
+    height: 45px;
+}
+
+/* BOTÓN NEGRO LOGIN */
+.btn-login {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 45px;
+}
+
+    .btn-login:hover {
+        background-color: #333;
+        color: white;
+    }
+
+/* BOTÓN MOSTAZA TAMBO */
+.btn-mostaza {
+    background-color: #F7C325;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 45px;
+}
+
+    .btn-mostaza:hover {
+        background-color: #d4a61f;
+        color: black;
+    }
+
+/* TARJETAS MORADAS (universal en tu app) */
+.card-tambo {
+    border: 2px solid #7A1FA2;
+    border-radius: 12px;
+}
+
+/* TARJETA MORADA TAMBO */
+.card-tambo {
+    border: 2px solid #7A1FA2;
+    border-radius: 10px;
+}
+
+/* BOTÓN MORADO TAMBO */
+.btn-tambo {
+    background-color: #7A1FA2;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+    .btn-tambo:hover {
+        background-color: #4A0072;
+        color: white;
+    }
+
+/* COLOR PRINCIPAL TAMBO */
+:root {
+    --tambo-morado: #7A1FA2;
+    --tambo-morado-oscuro: #4A0072;
+    --tambo-gris-fondo: #F7F5FA;
+}
+
+/* NAVBAR MORADO */
+.navbar {
+    background-color: var(--tambo-morado) !important;
+    border-bottom: 3px solid var(--tambo-morado-oscuro);
+}
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: white !important;
+        font-weight: 600;
+    }
+
+        .navbar .nav-link:hover {
+            color: #FFD9FF !important;
+        }
+
+/* BOTÓN MORADO TAMBO */
+.btn-tambo {
+    background-color: var(--tambo-morado);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+    .btn-tambo:hover {
+        background-color: var(--tambo-morado-oscuro);
+    }
+
+/* FONDO DE LA PÁGINA */
+body {
+    background-color: var(--tambo-gris-fondo);
+}
+
+/* TARJETAS (Login, Registro, etc.) */
+.card-tambo {
+    border: 2px solid var(--tambo-morado);
+    border-radius: 12px;
+}
+
+    .card-tambo .card-header {
+        background-color: var(--tambo-morado);
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+/* MORADO TAMBO */
+:root {
+    --tambo-morado: #7A1FA2;
+    --tambo-morado-oscuro: #4A0072;
+    --tambo-mostaza: #F7C325;
+}
+
+/* BOTÓN MORADO */
+.btn-tambo {
+    background-color: var(--tambo-morado);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+    .btn-tambo:hover {
+        background-color: var(--tambo-morado-oscuro);
+        color: white;
+    }
+
+/* BOTÓN MOSTAZA */
+.btn-mostaza {
+    background-color: var(--tambo-mostaza);
+    color: #4A0072;
+    font-weight: bold;
+    border: none;
+}
+
+    .btn-mostaza:hover {
+        background-color: #d4a61f;
+        color: white;
+    }
+
+/* TABLA ESTILO TAMBO */
+.table-tambo-header {
+    background-color: var(--tambo-morado);
+    color: white;
+    font-weight: bold;
+}
+
+.tambo-table tr:hover {
+    background-color: #F3E8F9 !important;
+}
+
+/* TARJETA GENERAL DE FORMULARIOS */
+.registro-card, .login-card {
+    background: white;
+    border-radius: 18px;
+    padding: 35px;
+    width: 470px;
+}
+
+/* INPUTS REDONDEADOS */
+.tam-input {
+    border-radius: 12px;
+    height: 45px;
+}
+
+/* BOTÓN MOSTAZA TAMBO */
+.btn-mostaza {
+    background-color: #F7C325;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 45px;
+}
+
+    .btn-mostaza:hover {
+        background-color: #d4a61f;
+        color: black;
+    }
+
+/* BOTÓN MORADO (si lo necesitas) */
+.btn-tambo {
+    background-color: #7A1FA2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    height: 45px;
+}
+
+    .btn-tambo:hover {
+        background-color: #4A0072;
+        color: white;
+    }
+
+/* TARJETA MORADA GENERAL */
+.card-tambo {
+    border: 2px solid #7A1FA2;
+    border-radius: 12px;
+}
+
+/* ===========================
+   HEADER TICKER
+=========================== */
+
+.tambo-header-ticker {
+    width: 100%;
+    background-color: #ffdd00;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px 0;
+    border-bottom: 2px solid #000;
+    flex-shrink: 0 !important; /* ← ESTE ERA EL FALTANTE */
+}
+
+.tambo-ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: tambo-scroll 20s linear infinite;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+}
+
+@keyframes tambo-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===========================
+   BASE
+=========================== */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 0; /* Eliminamos margen blanco */
+}
+
+/* ===========================
+   FONDO GENERAL
+=========================== */
+
+.menu-fondo {
+    background-color: #9b1a81 !important;
+    color: white;
+    min-height: 100%;
+    width: 100%;
+}
+
+    /* Tarjetas */
+    .menu-fondo .card {
+        background-color: white;
+        color: black;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Títulos dentro del fondo */
+    .menu-fondo h1,
+    .menu-fondo h4 {
+        color: #ffffff !important;
+    }
+
+/* ===========================
+   NAV BAR TAMBO
+=========================== */
+
+.tambo-nav {
+    background-color: #ffdd00;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.nav-btn {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 8px 18px;
+    border: none;
+}
+
+    .nav-btn:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+.nav-btn-outline {
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 8px 18px;
+    border: 2px solid #000;
+}
+
+    .nav-btn-outline:hover {
+        background-color: #000;
+        color: #ffdd00;
+    }
+
+/* Logo */
+.tambo-logo {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===========================
+   PRODUCTOS
+=========================== */
+
+.productos-container {
+    background-color: #9b1a81 !important;
+    width: 100%;
+    padding: 40px 0;
+    min-height: calc(100vh - 200px); /* asegura que cubra el fondo */
+    color: white;
+}
+
+.categoria-title {
+    color: #ffdd00;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.producto-section {
+    margin-bottom: 40px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.categoria-link {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    width: 100%;
+}
+
+    .categoria-link:hover {
+        color: #9b1a81;
+        font-weight: bold;
+    }
+
+.categorias-box {
+    max-width: 300px; /* ancho ideal como Tambo */
+    width: 100%;
+    margin: 0 auto; /* centrado dentro de su columna */
+}
+
+/* ===== FOOTER ESTILO TAMBO ===== */
+.tambo-footer {
+    background-color: #7A1FA2; /* Morado Tambo */
+    border-top: 4px solid #F7C325; /* Línea mostaza */
+    color: white;
+}
+
+    .tambo-footer a {
+        color: #FFD740; /* Amarillo claro tipo Tambo */
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .tambo-footer a:hover {
+            text-decoration: underline;
+            color: #F7C325; /* Mostaza */
+        }
+
+    .tambo-footer img {
+        filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.3));
+    }
+  
+.tambo-header-ticker {
+    flex-shrink: 0 !important;
 }

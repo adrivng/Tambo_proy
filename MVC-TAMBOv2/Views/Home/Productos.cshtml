@@ -1,0 +1,274 @@
+﻿@{
+    ViewData["Title"] = "Productos";
+}
+
+<body class="menu-fondo">
+    <div class="container mt-4">
+
+        <!-- HEADER -->
+        <header class="text-center mb-4">
+            <img src="~/img/logotambo.png" alt="Logo" class="tambo-logo" />
+            <h1 class="mt-2">Tambo - Pedido en Línea</h1>
+        </header>
+
+        <!-- BARRA DE NAVEGACIÓN -->
+        <nav class="tambo-nav d-flex justify-content-center mb-4">
+            <a asp-controller="Tambo" asp-action="MenuPrincipal" class="btn nav-btn mx-2">Inicio</a>
+            <a asp-controller="Home" asp-action="Productos" class="btn nav-btn-outline mx-2">Productos</a>
+            <a href="#" class="btn nav-btn-outline mx-2">Promociones</a>
+            <a href="#" class="btn nav-btn-outline mx-2">Mi carrito</a>
+        </nav>
+
+        <!-- TITULO -->
+        <h1 class="text-center mb-4 text-white">Pasillo de productos</h1>
+
+        <!-- ======================= SNACKS ======================= -->
+        <section id="snacks " class="producto-section">
+            <h3 class="categoria-title">Snacks</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/chifles.jpg" class="card-img-top" alt="Chifles">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Chifles 150g</h5>
+                            <p class="card-text">S/. 7.90</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/lays.jpg" class="card-img-top" alt="Lays">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Lays Clásicas 150g</h5>
+                            <p class="card-text">S/. 4.00</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/ritz.jpg" class="card-img-top" alt="Ritz">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Galletas Ritz</h5>
+                            <p class="card-text">S/. 3.50</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/field.jpg" class="card-img-top" alt="Field">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Galletas Field</h5>
+                            <p class="card-text">S/. 2.80</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= GALLETAS ======================= -->
+        <section id="galletas" class="producto-section">
+            <h3 class="categoria-title">Galletas</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/ritz.jpg" class="card-img-top" alt="Ritz">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Galletas Ritz</h5>
+                            <p class="card-text">S/. 3.50</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/field.jpg" class="card-img-top" alt="Field">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Galletas Field</h5>
+                            <p class="card-text">S/. 2.80</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= GASEOSAS ======================= -->
+        <section id="gaseosas" class="producto-section">
+            <h3 class="categoria-title">Gaseosas</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/inka.jpg" class="card-img-top" alt="Inca Kola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Inca Kola 500ml</h5>
+                            <p class="card-text">S/. 3.50</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/bigcola.jpg" class="card-img-top" alt="Big Cola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Big Cola</h5>
+                            <p class="card-text">S/. 2.50</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= AGUAS ======================= -->
+        <section id="aguas" class="producto-section">
+            <h3 class="categoria-title">Aguas</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/sanmateo.jpg" class="card-img-top" alt="San Mateo">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Agua San Mateo 500ml</h5>
+                            <p class="card-text">S/. 2.00</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= PACKS ======================= -->
+        <section id="packs" class="producto-section">
+            <h3 class="categoria-title">Packs</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/packcocas.jpg" class="card-img-top" alt="Pack Coca Cola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Pack Coca Cola (3 unidades)</h5>
+                            <p class="card-text">S/. 10.00</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= CERVEZA ======================= -->
+        <section id="cerveza" class="producto-section">
+            <h3 class="categoria-title">Cerveza</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/3cruces.jpg" class="card-img-top" alt="Pack Coca Cola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Cerveza Tres Cruces Sixpack Lata 473 ML</h5>
+                            <p class="card-text">S/. 22.90</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/3cruceswhite.jpg" class="card-img-top" alt="Pack Coca Cola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Cerveza Tres Cruces Light Sixpack Lata 310 ML</h5>
+                            <p class="card-text">S/. 20.90</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= LICORES ======================= -->
+        <section id="licores" class="producto-section">
+            <h3 class="categoria-title">Licores</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/walker.jpg" class="card-img-top" alt="Pack Coca Cola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Whisky Johnnie Walker Double Black Botella 750 mL</h5>
+                            <p class="card-text">S/. 22.90</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/chivas.jpg" class="card-img-top" alt="Pack Coca Cola">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Whisky Chivas Regal 12 Años Botella 1 L</h5>
+                            <p class="card-text">S/. 22.90</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======================= CHOCOLATES ======================= -->
+        <section id="chocolates" class="producto-section">
+            <h3 class="categoria-title">Chocolates</h3>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/choco.jpg" class="card-img-top" alt="Chocolate">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Chocolate Fina</h5>
+                            <p class="card-text">S/. 2.20</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card">
+                        <img src="~/img/panetoncito.jpg" class="card-img-top" alt="Panetón">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Mini Panetón</h5>
+                            <p class="card-text">S/. 4.40</p>
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>

@@ -23,6 +23,11 @@ namespace MVC_TAMBOv2.Controllers
             return View();
         }
 
+        public IActionResult Productos()
+        {
+            return View();
+        }
+
         public IActionResult MenuAdmin() => View();
         public IActionResult MenuStaff() => View();
         public IActionResult MenuCliente() => View();
