@@ -1,0 +1,30 @@
+﻿<div class="card card-tambo mx-auto mt-5" style="max-width:650px;">
+    <div class="card-header">Registro de Cliente</div>
+
+    <div class="card-body">
+        <form asp-action="RegistroCliente" method="post">
+
+            <input type="email" name="Correo" value="@ViewBag.Correo" readonly class="form-control mb-3" />
+
+            <input type="password" name="Password" class="form-control mb-3" placeholder="Crear contraseña" required />
+
+            <input type="text" name="Nombre" class="form-control mb-3" placeholder="Nombre" required />
+            <input type="text" name="Apellido" class="form-control mb-3" placeholder="Apellido" required />
+
+            <input type="text" name="Direccion" class="form-control mb-3" placeholder="Dirección" />
+            <input type="number" name="Telefono" class="form-control mb-3" placeholder="Teléfono" />
+
+            <input type="number" name="Dni" class="form-control mb-3" placeholder="DNI" />
+
+            <select name="TipoCliente" class="form-select mb-3">
+                <option>Natural</option>
+                <option>Jurídico</option>
+            </select>
+
+            <input type="text" name="Ruc" class="form-control mb-3" placeholder="RUC (Opcional)" />
+
+            <button class="btn btn-tambo w-100">Registrarme</button>
+
+        </form>
+    </div>
+</div>

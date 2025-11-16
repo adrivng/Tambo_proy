@@ -23,6 +23,10 @@ namespace MVC_TAMBOv2.Controllers
             return View();
         }
 
+        public IActionResult MenuAdmin() => View();
+        public IActionResult MenuStaff() => View();
+        public IActionResult MenuCliente() => View();
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

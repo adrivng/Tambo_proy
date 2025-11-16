@@ -1,42 +1,144 @@
-﻿<!DOCTYPE html>
+﻿@{
+    // 🟢 OBTENER EL ROL DESDE SESSION
+    var rol = Context.Session.GetString("rol");
+    // valores posibles: "admin", "staff", "cliente", null
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MVC_TAMBOv2</title>
+    <title>@ViewData["Title"] - TAMBO</title>
+    <link rel="icon" type="image/x-icon" href="~/img/logotambo.png" />
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MVC_TAMBOv2.styles.css" asp-append-version="true" />
+
+    <style>
+
+        /* COLOR PRINCIPAL TAMBO */
+        :root {
+            --tambo-morado: #7A1FA2;
+            --tambo-morado-oscuro: #4A0072;
+            --tambo-gris-fondo: #F7F5FA;
+        }
+
+        /* NAVBAR MORADO */
+        .navbar {
+            background-color: var(--tambo-morado) !important;
+            border-bottom: 3px solid var(--tambo-morado-oscuro);
+        }
+
+            .navbar .nav-link,
+            .navbar .navbar-brand {
+                color: white !important;
+                font-weight: 600;
+            }
+
+                .navbar .nav-link:hover {
+                    color: #FFD9FF !important;
+                }
+
+        /* BOTÓN MORADO TAMBO */
+        .btn-tambo {
+            background-color: var(--tambo-morado);
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+            .btn-tambo:hover {
+                background-color: var(--tambo-morado-oscuro);
+            }
+
+        /* FONDO DE LA PÁGINA */
+        body {
+            background-color: var(--tambo-gris-fondo);
+        }
+
+        /* TARJETAS (Login, Registro, etc.) */
+        .card-tambo {
+            border: 2px solid var(--tambo-morado);
+            border-radius: 12px;
+        }
+
+            .card-tambo .card-header {
+                background-color: var(--tambo-morado);
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC_TAMBOv2</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand d-flex align-items-center"
+                   asp-area="" asp-controller="Tambo" asp-action="MenuPrincipal">
+
+                    <img src="~/img/logotambo.png"
+                         alt="Tambo Logo"
+                         style="height:40px; width:auto;" />
+
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    <!-- 🌟 MENÚ IZQUIERDA -->
                     <ul class="navbar-nav flex-grow-1">
+
+                        <!-- ⭐ TODOS LOS USUARIOS (CLIENTE / STAFF / ADMIN) -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tambo" asp-action="MenuPrincipal">Menu</a>
+                            <a class="nav-link text-dark" asp-controller="Tambo" asp-action="MenuPrincipal">Menu</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li> *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tambo" asp-action="Index">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tambo" asp-action="RegistroProveedor">Proveedores</a>
-                        </li>
+
+                        <!-- ⭐ SOLO STAFF Y ADMIN -->
+                        @if (rol == "staff" || rol == "admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Tambo" asp-action="Index">Productos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Tambo" asp-action="RegistroProveedor">Proveedores</a>
+                            </li>
+                        }
                     </ul>
+
+                    <!-- 🌟 MENÚ DERECHA (LOGIN / LOGOUT) -->
+                    <ul class="navbar-nav">
+
+                        <!-- Usuario NO logueado -->
+                        @if (rol == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Cuenta" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Cuenta" asp-action="Logout">Cerrar sesión (@rol)</a>
+                            </li>
+                        }
+
+                    </ul>
+
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -45,9 +147,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - MVC_TAMBOv2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - MVC_TAMBOv2
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
