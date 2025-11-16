@@ -1,30 +1,65 @@
-﻿<div class="card card-tambo mx-auto mt-5" style="max-width:650px;">
-    <div class="card-header">Registro de Cliente</div>
+﻿<div class="d-flex justify-content-center mt-5">
+    <div class="registro-card shadow">
 
-    <div class="card-body">
+        <!-- LOGO TAMBO -->
+        <div class="text-center mb-3">
+            <img src="~/img/logotambo.png" style="height:85px; width:auto;" />
+        </div>
+
+        <h3 class="text-center fw-bold mb-4" style="color:#7A1FA2;">Registro de Cliente</h3>
+
         <form asp-action="RegistroCliente" method="post">
 
-            <input type="email" name="Correo" value="@ViewBag.Correo" readonly class="form-control mb-3" />
+            <input type="email" name="Correo"
+                   value="@ViewBag.Correo" readonly
+                   class="form-control tam-input mb-3" />
 
-            <input type="password" name="Password" class="form-control mb-3" placeholder="Crear contraseña" required />
+            <input type="password" name="Password"
+                   class="form-control tam-input mb-3"
+                   placeholder="Crear contraseña" required />
 
-            <input type="text" name="Nombre" class="form-control mb-3" placeholder="Nombre" required />
-            <input type="text" name="Apellido" class="form-control mb-3" placeholder="Apellido" required />
+            <input type="text" name="Nombre"
+                   class="form-control tam-input mb-3"
+                   placeholder="Nombre" required />
 
-            <input type="text" name="Direccion" class="form-control mb-3" placeholder="Dirección" />
-            <input type="number" name="Telefono" class="form-control mb-3" placeholder="Teléfono" />
+            <input type="text" name="Apellido"
+                   class="form-control tam-input mb-3"
+                   placeholder="Apellido" required />
 
-            <input type="number" name="Dni" class="form-control mb-3" placeholder="DNI" />
+            <input type="text" name="Direccion"
+                   class="form-control tam-input mb-3"
+                   placeholder="Dirección" />
 
-            <select name="TipoCliente" class="form-select mb-3">
+            <input type="number" name="Telefono"
+                   class="form-control tam-input mb-3"
+                   placeholder="Teléfono" />
+
+            <input type="number" name="Dni"
+                   class="form-control tam-input mb-3"
+                   placeholder="DNI" />
+
+            <select name="TipoCliente"
+                    class="form-select tam-input mb-3">
                 <option>Natural</option>
                 <option>Jurídico</option>
             </select>
 
-            <input type="text" name="Ruc" class="form-control mb-3" placeholder="RUC (Opcional)" />
+            <input type="text" name="Ruc"
+                   class="form-control tam-input mb-4"
+                   placeholder="RUC (Opcional)" />
 
-            <button class="btn btn-tambo w-100">Registrarme</button>
+            <div class="d-flex justify-content-between mt-3">
+
+                <button class="btn btn-mostaza w-50 me-2">Registrarme</button>
+
+                <a asp-controller="Tambo" asp-action="MenuPrincipal"
+                   class="btn btn-mostaza w-50 ms-2">
+                    Volver
+                </a>
+
+            </div>
 
         </form>
     </div>
 </div>
+

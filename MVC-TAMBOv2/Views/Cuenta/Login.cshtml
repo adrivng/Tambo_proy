@@ -1,19 +1,39 @@
-﻿<div class="card card-tambo mx-auto mt-5" style="max-width:450px;">
-    <div class="card-header">
-        Iniciar Sesión
-    </div>
+﻿<div class="d-flex justify-content-center mt-5">
+    <div class="login-card shadow">
 
-    <div class="card-body">
+        <!-- LOGO TAMBO -->
+        <div class="text-center mb-3">
+            <img src="~/img/logotambo.png" style="height:90px; width:auto;" />
+        </div>
+
+        <h3 class="text-center fw-bold mb-4" style="color:#7A1FA2;">Bienvenido</h3>
 
         <form asp-action="Login" method="post">
 
-            <input type="email" name="correo" class="form-control mb-3" placeholder="Correo" required />
+            <input type="email"
+                   name="correo"
+                   class="form-control tam-input mb-3"
+                   placeholder="Correo electrónico"
+                   required />
 
-            <input type="password" name="password" class="form-control mb-4" placeholder="Contraseña" required />
+            <input type="password"
+                   name="password"
+                   class="form-control tam-input mb-4"
+                   placeholder="Contraseña"
+                   required />
 
-            <button class="btn btn-tambo w-100">Ingresar</button>
+            <!-- BOTÓN LOGIN NEGRO -->
+            <button type="submit" class="btn btn-login w-100 mb-3">
+                Login
+            </button>
+
+            <!-- BOTÓN MOSTAZA VOLVER -->
+            <a asp-controller="Tambo" asp-action="MenuPrincipal"
+               class="btn btn-mostaza w-100">
+                Volver
+            </a>
 
         </form>
-
     </div>
 </div>
+
