@@ -1,46 +1,54 @@
 ﻿@model IEnumerable<MVC_TAMBOv2.Models.Producto>
 
-<h1>Productos</h1>
-<br />
-<a asp-action="AgregarProducto" class="btn btn-primary"
-   style="background-color:#6f42c1; border-color:#6f42c1;">Registrar Producto</a>
-<br />
-<br />
+<h2 class="fw-bold text-center mb-4" style="color:#7A1FA2;">Lista de Productos</h2>
 
-<table class="table table-bordered">
-    <tr>
-        <th>Categoria</th>
-        <th>Marca</th>
-        <th>Nombre</th>
-        <th>Precio Unitario</th>
-        <th>Fecha expiracion</th>
-        <th>Acciones</th>  <!-- NUEVA COLUMNA -->
-    </tr>
+<div class="text-end mb-3">
+    <a asp-action="AgregarProducto" class="btn btn-tambo">
+        Registrar Producto
+    </a>
+</div>
 
-    @foreach (var product in Model)
-    {
-        <tr>
-            <td>@product.IdCategoriaNavigation?.NombreCategoria</td>
-            <td>@product.IdMarcaNavigation?.Nombre</td>
-            <td>@product.Nombre</td>
-            <td>@product.PrecioUnitario</td>
-            <td>@product.FechaExpiracion</td>
+<div class="table-responsive">
+    <table class="table table-striped table-hover tambo-table shadow-sm">
+        <thead class="table-tambo-header">
+            <tr>
+                <th>Categoría</th>
+                <th>Marca</th>
+                <th>Nombre</th>
+                <th>Precio Unitario</th>
+                <th>Fecha expiración</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
 
-            <!-- BOTÓN DE ACCIÓN PARA REGISTRAR SALIDA -->
-            <td>
-                <a asp-controller="Tambo"
-                   asp-action="RegistrarSalida"
-                   asp-route-idProducto="@product.IdProducto"
-                   class="btn btn-warning btn-sm">
-                    Registrar Salida
-                </a>
-                <a asp-action="RegistrarEntrada"
-                   asp-route-idProducto="@product.IdProducto"
-                   class="btn btn-success btn-sm">
-                    Registrar Entrada
-                </a>
-            </td>
-        </tr>
-    }
-</table>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.IdCategoriaNavigation?.NombreCategoria</td>
+                    <td>@product.IdMarcaNavigation?.Nombre</td>
+                    <td>@product.Nombre</td>
+                    <td>S/ @product.PrecioUnitario</td>
+                    <td>@product.FechaExpiracion?.ToString("yyyy-MM-dd")</td>
 
+                    <td class="text-center">
+
+                        <a asp-controller="Tambo"
+                           asp-action="RegistrarSalida"
+                           asp-route-idProducto="@product.IdProducto"
+                           class="btn btn-mostaza btn-sm">
+                            Salida
+                        </a>
+
+                        <a asp-action="RegistrarEntrada"
+                           asp-route-idProducto="@product.IdProducto"
+                           class="btn btn-tambo btn-sm ms-1">
+                            Entrada
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

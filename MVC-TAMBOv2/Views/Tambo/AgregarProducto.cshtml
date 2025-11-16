@@ -4,49 +4,62 @@
     ViewData["Title"] = "AgregarProducto";
 }
 
-<h1>Registrar Producto</h1>
-<br />
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AgregarProducto">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nombre"></label>
-                <input asp-for="Nombre" class="form-control" />
-            </div>
+<h2 class="text-center fw-bold mb-4" style="color:#7A1FA2;">Registrar Producto</h2>
 
-            <div class="form-group">
-                <label asp-for="Precio"></label>
-                <input asp-for="Precio" class="form-control" />
-            </div>
+<div class="row justify-content-center">
+    <div class="col-md-6">
 
-            <div class="form-group">
-                <label asp-for="FechaExpiracion"></label>
-                <input asp-for="FechaExpiracion" class="form-control" type="date" />
-            </div>
+        <div class="card shadow card-tambo">
+            <div class="card-body">
 
-            <div class="form-group">
-                <label asp-for="Marca"></label>
-                <input asp-for="Marca" class="form-control" />
-            </div>
+                <form asp-action="AgregarProducto">
 
-            <div class="form-group">
-                <label asp-for="Categoria"></label>
-                <input asp-for="Categoria" class="form-control" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Nombre" class="fw-bold"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Precio" class="fw-bold"></label>
+                        <input asp-for="Precio" class="form-control" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="FechaExpiracion" class="fw-bold"></label>
+                        <input asp-for="FechaExpiracion" class="form-control" type="date" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Marca" class="fw-bold"></label>
+                        <input asp-for="Marca" class="form-control" />
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="Categoria" class="fw-bold"></label>
+                        <input asp-for="Categoria" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-tambo w-100">
+                        Registrar Producto
+                    </button>
+
+                </form>
+
             </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Registrar Producto" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="text-decoration-none fw-bold" style="color:#7A1FA2;">← Volver</a>
+        </div>
+
     </div>
 </div>
-<br />
-<div>
-    <a asp-action="Index">Volver</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
