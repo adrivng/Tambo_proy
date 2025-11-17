@@ -6,12 +6,11 @@ namespace ProyectoTambo.Controllers
     public class ProveedorController : Controller
     {
         private readonly TamboContext _context;
-        
+
         public ProveedorController(TamboContext context)
         {
             _context = context;
         }
-
 
         public IActionResult Index()
         {
@@ -19,30 +18,16 @@ namespace ProyectoTambo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> RegistroProveedor()
+        public IActionResult RegistroProveedor()
         {
-
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegistroProveedor_Post()
+        public async Task<IActionResult> RegistroProveedor_Post(Proveedor proveedor)
         {
             try
             {
-                var nombre = Request.Form["nombre"];
-                var telefono = Request.Form["telefono"];
-                var correo = Request.Form["correo"];
-                var descripcion = Request.Form["descripcion"];
-
-                var proveedor = new Proveedor
-                {
-                    Nombre = nombre,
-                    Telefono = telefono,
-                    Correo = correo,
-                    Descripcion = descripcion
-                };
-
                 await _context.Proveedors.AddAsync(proveedor);
                 await _context.SaveChangesAsync();
 
@@ -53,7 +38,7 @@ namespace ProyectoTambo.Controllers
                 TempData["error"] = "Fallo al registrar: " + ex.Message;
             }
 
-            return RedirectToAction("RegistroProveedor");
+            return RedirectToAction("RegistroProveedor", new Proveedor());
         }
     }
 }

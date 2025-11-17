@@ -1,57 +1,58 @@
-﻿<div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #730D4E;">
+﻿@model Proveedor
+
+<div class="d-flex justify-content-center py-5" style="background-color: #730D4E; min-height: 100vh;">
     <div class="card shadow-lg border-0 rounded-4" style="width: 28rem; background-color: #C71585; color: white;">
+
         <div class="card-header text-center fw-bold fs-4 border-0" style="background-color: #C71585; color: white;">
             Registro de Proveedores
         </div>
+
         <div class="card-body p-4">
-            <!-- Mensajes -->
-            @if (ViewBag.mensaje != null)
+
+            <!-- Mostrar mensajes -->
+            @if (TempData["mensaje"] != null)
             {
-                <div class="alert alert-success">@ViewBag.Mensaje</div>
+                <div class="alert alert-success">@TempData["mensaje"]</div>
             }
-            @if (ViewBag.error != null)
+            @if (TempData["error"] != null)
             {
-                <div class="alert alert-danger">@ViewBag.Error</div>
+                <div class="alert alert-danger">@TempData["error"]</div>
             }
+
         </div>
 
         <div class="card-body p-4" style="background-color: #C71585;">
             <form asp-action="RegistroProveedor_Post" method="post">
-                @* <div class="mb-3">
-                    <label for="codigo" class="form-label fw-semibold">Código</label>
-                    <input type="text" class="form-control border-0" id="codigo" placeholder="Ingrese el código del proveedor">
-                </div> *@
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label fw-semibold">Nombre</label>
-                    <input type="text" class="form-control border-0" id="nombre" name="nombre" required placeholder="Ingrese el nombre del proveedor">
+                    <input asp-for="Nombre" class="form-control border-0" placeholder="Ingrese el nombre del proveedor" required />
                 </div>
 
                 <div class="mb-3">
                     <label for="telefono" class="form-label fw-semibold">Teléfono</label>
-                    <input type="text" class="form-control border-0" id="telefono" name="telefono" required placeholder="Ingrese el número de teléfono">
+                    <input asp-for="Telefono" class="form-control border-0" placeholder="Ingrese el número de teléfono" required />
                 </div>
 
                 <div class="mb-3">
                     <label for="correo" class="form-label fw-semibold">Correo</label>
-                    <input type="email" class="form-control border-0" id="correo" name="correo" required  placeholder="ejemplo@correo.com">
+                    <input asp-for="Correo" type="email" class="form-control border-0" placeholder="ejemplo@correo.com" required />
                 </div>
 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label fw-semibold">Descripción</label>
-                    <textarea class="form-control border-0" id="descripcion" name="descripcion" rows="4" required placeholder="Escribe una descripción aquí..."></textarea>
+                    <textarea asp-for="Descripcion" class="form-control border-0" rows="4" placeholder="Escribe una descripción aquí..." required></textarea>
                 </div>
 
                 <div class="text-center mt-4">
                     <button type="submit" class="btn fw-bold me-2" style="background-color: gold; color: black;">
                         Registrar
                     </button>
-                    <button type="button" class="btn btn-danger">
-                        Cancelar
-                    </button>
+
+                    <a asp-controller ="Tambo" asp-action="MenuPrincipal" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>
+
     </div>
 </div>
-
